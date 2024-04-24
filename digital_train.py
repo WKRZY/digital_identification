@@ -10,14 +10,18 @@ import torch.nn.functional as F
 import torch.optim as optim
 import matplotlib.pyplot as plt
 
-n_epochs = 30
-batch_size_train = 64
-batch_size_test = 1000
-learning_rate = 0.01
-momentum = 0.95
-log_interval = 10
-random_seed = 1
+# 设置训练和测试的基本参数
+n_epochs = 30  # 训练的轮数
+batch_size_train = 64  # 训练时的批次大小
+batch_size_test = 1000  # 测试时的批次大小
+learning_rate = 0.01  # 学习率
+momentum = 0.95  # 惯性系数，用于动量优化器
+log_interval = 10  # 日志记录间隔
+random_seed = 1  # 随机种子，用于保证结果可复现
+
+# 使用设置的随机种子初始化PyTorch的随机数生成器
 torch.manual_seed(random_seed)
+
 train_loader = torch.utils.data.DataLoader(
     torchvision.datasets.MNIST('./data/', train=True, download=True,
                                transform=torchvision.transforms.Compose([
@@ -34,23 +38,9 @@ test_loader = torch.utils.data.DataLoader(
                                    #     (0.1307,), (0.3081,))
                                ])),
     batch_size=batch_size_test, shuffle=True)
-# print(train_loader)
+
 examples = enumerate(test_loader)
 batch_idx, (example_data, example_targets) = next(examples)
-
-# print(example_targets)
-# print(example_data.shape)
-#
-# fig = plt.figure()
-# for i in range(6):
-#     plt.subplot(2, 3, i + 1)
-#     plt.tight_layout()
-#     data = numpy.array(example_data[i][0])
-#     plt.imshow(example_data[i][0], interpolation='none')
-#     plt.title("Ground Truth: {}".format(example_targets[i]))
-#     plt.xticks([])
-#     plt.yticks([])
-# plt.show()
 
 network = Net()
 optimizer = optim.SGD(network.parameters(), lr=learning_rate, momentum=momentum)
@@ -112,7 +102,7 @@ examples = enumerate(test_loader)
 batch_idx, (example_data, example_targets) = next(examples)
 with torch.no_grad():
     output = network(example_data)
-fig = plt.figure()
+# fig = plt.figure()
 for i in range(6):
     plt.subplot(2, 3, i + 1)
     plt.tight_layout()
