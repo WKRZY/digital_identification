@@ -34,6 +34,8 @@ python model_show.py
 
 ## 参考链接
 
+# win32gui安装报错解决：https://blog.csdn.net/qq_42231156/article/details/114194444
+
 知乎：https://zhuanlan.zhihu.com/p/137571225
 
 可视化：https://data-flair.training/blogs/python-deep-learning-project-handwritten-digit-recognition/
