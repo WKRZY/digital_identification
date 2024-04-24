@@ -7,8 +7,10 @@
 
 ## 使用说明
 
+<video src="./img/di.mp4" controls="controls" width="100%" height="100%">
 - 进行训练运行digital_train.py
 - 直接测试运行model_show.py
+
 
 ## 安装
 
